@@ -15,7 +15,7 @@ import os
 dbhandler.create_table()
 
        
-bot=commands.Bot(description="Lounge bot for. This bot was brought to you by royalnoob. Built from scratch.",command_prefix="-",pm_help=False)
+bot=commands.Bot(description="Lounge bot. This bot was brought to you by royalnoob. Built from scratch.",command_prefix="-",pm_help=False)
        
 bot.remove_command('help')
        
@@ -64,7 +64,7 @@ async def daily(ctx):
 	if ctx.message.channel.id == "455856117516337179":
 		if dbhandler.daily(ctx) == True:
 			await bot.add_reaction(message = ctx.message, emoji = "✅")
-			embed = discord.Embed(title="Daily | "+ctx.message.author.display_name,description="**Added 100<:Coin:439199818447978508>!**\nBe sure to use -daily again tomorrow to gain another 100<:Coin:439199818447978508>!",colour=0x00FF15)
+			embed = discord.Embed(title="Daily | "+ctx.message.author.display_name,description="**Added 100<:coin:456086215909965825>!**\nBe sure to use -daily again tomorrow to gain another 100<:Coin:439199818447978508>!",colour=0x00FF15)
 		else:
 			await bot.add_reaction(message = ctx.message, emoji = "🚫")
 			embed = discord.Embed(title="Daily | "+ctx.message.author.display_name,description="You have already claimed your daily today!\nYou can use this command again in "+dbhandler.getdaily(ctx)+" !",colour=0xFF0000)
@@ -353,19 +353,19 @@ async def slot(ctx,bet=None):
             bet = int(bet)
             if dbhandler.checkforbet(ctx,bet) == True:
                 if bet >= 1:
-                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:Coin:439199818447978508>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:Coin:439199818447978508>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:Coin:439199818447978508>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:Coin:439199818447978508>\n5. 2 🍒's - "+str(bet*2)+"<:Coin:439199818447978508>\n6. 1 🍒 - Your "+str(bet)+"<:Coin:439199818447978508> back\n\nThe slot machine will spin in 5 seconds!",colour=0xEE82EE)
+                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:coin:456086215909965825>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:coin:456086215909965825>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:coin:456086215909965825>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:coin:456086215909965825>\n5. 2 🍒's - "+str(bet*2)+"<:coin:456086215909965825>\n6. 1 🍒 - Your "+str(bet)+"<:coin:456086215909965825> back\n\nThe slot machine will spin in 5 seconds!",colour=0xEE82EE)
                     message = await bot.say(embed=embed)
                     await asyncio.sleep(1)
-                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:Coin:439199818447978508>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:Coin:439199818447978508>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:Coin:439199818447978508>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:Coin:439199818447978508>\n5. 2 🍒's - "+str(bet*2)+"<:Coin:439199818447978508>\n6. 1 🍒 - Your "+str(bet)+"<:Coin:439199818447978508> back\n\nThe slot machine will spin in 4 seconds!",colour=0xEE82EE)
+                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:coin:456086215909965825>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:coin:456086215909965825>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:coin:456086215909965825>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:coin:456086215909965825>\n5. 2 🍒's - "+str(bet*2)+"<:coin:456086215909965825>\n6. 1 🍒 - Your "+str(bet)+"<:coin:456086215909965825> back\n\nThe slot machine will spin in 4 seconds!",colour=0xEE82EE)
                     await bot.edit_message(message=message,embed=embed)
                     await asyncio.sleep(1)
-                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:Coin:439199818447978508>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:Coin:439199818447978508>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:Coin:439199818447978508>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:Coin:439199818447978508>\n5. 2 🍒's - "+str(bet*2)+"<:Coin:439199818447978508>\n6. 1 🍒 - Your "+str(bet)+"<:Coin:439199818447978508> back\n\nThe slot machine will spin in 3 seconds!",colour=0xEE82EE)
+                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:coin:456086215909965825>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:coin:456086215909965825>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:coin:456086215909965825>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:coin:456086215909965825>\n5. 2 🍒's - "+str(bet*2)+"<:coin:456086215909965825>\n6. 1 🍒 - Your "+str(bet)+"<:coin:456086215909965825> back\n\nThe slot machine will spin in 3 seconds!",colour=0xEE82EE)
                     await bot.edit_message(message=message,embed=embed)
                     await asyncio.sleep(1)
-                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:Coin:439199818447978508>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:Coin:439199818447978508>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:Coin:439199818447978508>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:Coin:439199818447978508>\n5. 2 🍒's - "+str(bet*2)+"<:Coin:439199818447978508>\n6. 1 🍒 - Your "+str(bet)+"<:Coin:439199818447978508> back\n\nThe slot machine will spin in 2 seconds!",colour=0xEE82EE)
+                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:coin:456086215909965825>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:coin:456086215909965825>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:coin:456086215909965825>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:coin:456086215909965825>\n5. 2 🍒's - "+str(bet*2)+"<:coin:456086215909965825>\n6. 1 🍒 - Your "+str(bet)+"<:coin:456086215909965825> back\n\nThe slot machine will spin in 2 seconds!",colour=0xEE82EE)
                     await bot.edit_message(message=message,embed=embed)
                     await asyncio.sleep(1)
-                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:Coin:439199818447978508>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:Coin:439199818447978508>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:Coin:439199818447978508>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:Coin:439199818447978508>\n5. 2 🍒's - "+str(bet*2)+"<:Coin:439199818447978508>\n6. 1 🍒 - Your "+str(bet)+"<:Coin:439199818447978508> back\n\nThe slot machine will spin in 1 seconds!",colour=0xEE82EE)
+                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:coin:456086215909965825>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:coin:456086215909965825>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:coin:456086215909965825>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:coin:456086215909965825>\n5. 2 🍒's - "+str(bet*2)+"<:coin:456086215909965825>\n6. 1 🍒 - Your "+str(bet)+"<:coin:456086215909965825> back\n\nThe slot machine will spin in 1 seconds!",colour=0xEE82EE)
                     await bot.edit_message(message=message,embed=embed)
                     await asyncio.sleep(1)
                     _items = ["🍒","🍋","🍊","🍇","🔔","🍫"]
@@ -375,87 +375,87 @@ async def slot(ctx,bet=None):
                     if wheel1 == "🍫" and wheel2 == "🍫" and wheel3 == "🍫":
                         bet = bet*10
                         bet = str(bet)
-                        embed1=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:Coin:439199818447978508>",colour=0xEE82EE)
+                        embed1=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
                         await bot.edit_message(message=message,embed=embed1)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🔔" and wheel2 == "🔔" and wheel3 == "🔔":
                         bet = bet*5
                         bet = str(bet)
-                        embed2=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:Coin:439199818447978508>",colour=0xEE82EE)
+                        embed2=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
                         await bot.edit_message(message=message,embed=embed2)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🔔" and wheel2 == "🔔" and wheel3 == "🍫":
                         bet = bet*5
                         bet = str(bet)
-                        embed3=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:Coin:439199818447978508>",colour=0xEE82EE)
+                        embed3=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
                         await bot.edit_message(message=message,embed=embed3)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🍇" and wheel2 == "🍇" and wheel3 == "🍇":
                         bet = bet*4
                         bet = str(bet)
-                        embed4=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:Coin:439199818447978508>",colour=0xEE82EE)
+                        embed4=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
                         await bot.edit_message(message=message,embed=embed4)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🍇" and wheel2 == "🍇" and wheel3 == "🍫":
                         bet = bet*4
                         bet = str(bet)
-                        embed5=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:Coin:439199818447978508>",colour=0xEE82EE)
+                        embed5=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
                         await bot.edit_message(message=message,embed=embed5)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🍊" and wheel2 == "🍊" and wheel3 == "🍊":
                         bet = bet*3
                         bet = str(bet)
-                        embed6=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:Coin:439199818447978508>",colour=0xEE82EE)
+                        embed6=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
                         await bot.edit_message(message=message,embed=embed6)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🍊" and wheel2 == "🍊" and wheel3 == "🍫":
                         bet = bet*3
                         bet = str(bet)
-                        embed7=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:Coin:439199818447978508>",colour=0xEE82EE)
+                        embed7=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
                         await bot.edit_message(message=message,embed=embed7)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🍒" and wheel2 == "🍒" and wheel3 == "🍒":
                         bet = bet*2
                         bet = str(bet)
-                        embed8=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:Coin:439199818447978508>",colour=0xEE82EE)
+                        embed8=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
                         await bot.edit_message(message=message,embed=embed8)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🍒" and wheel2 == "🍒":
                         bet = bet*2
                         bet = str(bet)
-                        embed9=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:Coin:439199818447978508>",colour=0xEE82EE)
+                        embed9=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
                         await bot.edit_message(message=message,embed=embed9)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🍒" and wheel3 == "🍒":
                         bet = bet*2
                         bet = str(bet)
-                        embed10=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:Coin:439199818447978508>",colour=0xEE82EE)
+                        embed10=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
                         await bot.edit_message(message=message,embed=embed10)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel2 == "🍒" and wheel3 == "🍒":
                         bet = bet*2
                         bet = str(bet)
-                        embed11=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:Coin:439199818447978508>",colour=0xEE82EE)
+                        embed11=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
                         await bot.edit_message(message=message,embed=embed11)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🍒" and wheel2 != "🍒" and wheel3 != "🍒" or wheel2 == "🍒" and wheel1 != "🍒" and wheel3 != "🍒" or wheel3 == "🍒" and wheel2 != "🍒" and wheel1 != "🍒" :
                         bet = str(bet)
-                        embed12=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou get your "+bet+"<:Coin:439199818447978508> back!",colour=0xEE82EE)
+                        embed12=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou get your "+bet+"<:coin:456086215909965825> back!",colour=0xEE82EE)
                         await bot.edit_message(message=message,embed=embed12)
                         bet = int(bet)
                     else:
                         bet = str(bet)
-                        embed13=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou lose!! - "+bet+"<:Coin:439199818447978508>" ,colour=0xEE82EE)
+                        embed13=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou lose!! - "+bet+"<:coin:456086215909965825>" ,colour=0xEE82EE)
                         await bot.edit_message(message=message,embed=embed13)
                         bet = int(bet)
                         dbhandler.lose(ctx,bet)
@@ -464,17 +464,17 @@ async def slot(ctx,bet=None):
                     await bot.say(ctx.message.author.display_name+", You need to input an amount of 1 or more!")
             else:
                 bet=str(bet)
-                await bot.say(ctx.message.author.display_name+", You dont have "+bet+"<:Coin:439199818447978508>!!")
+                await bot.say(ctx.message.author.display_name+", You dont have "+bet+"<:coin:456086215909965825>!!")
         else:
             await bot.say(ctx.message.author.display_name+", You need to input an amount to bet!")
     else:
-        await bot.say(ctx.message.author.display_name+", This is a VIP command! You can buy VIP for 1000<:Coin:439199818447978508> using -buyvip")
+        await bot.say(ctx.message.author.display_name+", This is a VIP command! You can buy VIP for 1000<:coin:456086215909965825>")
 
 
        
 @bot.command()
 async def logs():
-    await bot.say("<:eyyy:425384698454343701> **EXPOSED** <:eyyy:425384698454343701>") #done
+    await bot.say("**EXPOSED**") #done
        
 @bot.command()
 async def lit():
@@ -545,22 +545,22 @@ async def rps(ctx,bet=None,*,choice):
                 if choice.lower() == botchoice.lower():
                     await bot.say("Draw! I chose "+str(botchoice)+". You get your money back!")
                 elif choice.lower() == "rock" and botchoice == "scissors":
-                    await bot.say("You win "+str(bet)+"<:Coin:439199818447978508>! I chose scissors")
+                    await bot.say("You win "+str(bet)+"<:coin:456086215909965825>! I chose scissors")
                     dbhandler.win(ctx,bet)
                 elif choice.lower() == "scissors" and botchoice == "paper":
-                    await bot.say("You win "+str(bet)+"<:Coin:439199818447978508>! I chose paper")
+                    await bot.say("You win "+str(bet)+"<:coin:456086215909965825>! I chose paper")
                     dbhandler.win(ctx,bet)
                 elif choice.lower() == "paper" and botchoice == "rock":
-                    await bot.say("You win "+str(bet)+"<:Coin:439199818447978508>! I chose rock")
+                    await bot.say("You win "+str(bet)+"<:coin:456086215909965825>! I chose rock")
                     dbhandler.win(ctx,bet)
                 elif choice.lower() == "rock" and botchoice == "paper":
-                    await bot.say("You lose "+str(bet)+"<:Coin:439199818447978508>! I chose paper")
+                    await bot.say("You lose "+str(bet)+"<:coin:456086215909965825>! I chose paper")
                     dbhandler.lose(ctx,bet)
                 elif choice.lower() == "scissors" and botchoice == "rock":
-                    await bot.say("You lose "+str(bet)+"<:Coin:439199818447978508>! I chose rock")
+                    await bot.say("You lose "+str(bet)+"<:coin:456086215909965825>! I chose rock")
                     dbhandler.lose(ctx,bet)
                 elif choice.lower() == "paper" and botchoice == "scissors":
-                    await bot.say("You lose "+str(bet)+"<:Coin:439199818447978508>! I chose scissors")
+                    await bot.say("You lose "+str(bet)+"<:coin:456086215909965825>! I chose scissors")
                     dbhandler.lose(ctx,bet)
                 elif choice.lower() != "rock" or "paper" or "scissors":
                     await bot.say("Thats not a choice!")
@@ -571,7 +571,7 @@ async def rps(ctx,bet=None,*,choice):
                 await bot.delete_message(ctx.message)
                 await bot.say(" Hey <@%s> You need to be in <#455856117516337179> to use -rps !" % (userID))
         else:
-            await bot.say("You do not have enough coins to do this command! You need at least "+bet+"<:Coin:439199818447978508>")
+            await bot.say("You do not have enough coins to do this command! You need at least "+bet+"<:coin:456086215909965825>")
     else:
         await bot.say("You need to input an amount to bet (1 or more)!")
     
@@ -584,17 +584,17 @@ async def rtd(ctx,bet=None):
             if ctx.message.channel.id == "455856117516337179":
                 botchoice=random.choice(_rtd)
                 if int(botchoice) < 5:
-                    await bot.say("Unlucky you rolled a "+str(botchoice)+". You lose "+bet+"<:Coin:439199818447978508>")
+                    await bot.say("Unlucky you rolled a "+str(botchoice)+". You lose "+bet+"<:coin:456086215909965825>")
                     dbhandler.lose(ctx,bet)
                 else:
-                    await bot.say("Well done. You rolled a "+str(botchoice)+". You win "+bet+"<:Coin:439199818447978508>")
+                    await bot.say("Well done. You rolled a "+str(botchoice)+". You win "+bet+"<:coin:456086215909965825>")
                     dbhandler.win(ctx,bet)
             else:
                 userID = ctx.message.author.id
                 await bot.delete_message(ctx.message)
                 await bot.say(" Hey <@%s> You need to be in <#455856117516337179> to use -rtd !" % (userID))
         else:
-            await bot.say("You do not have enough coins to do this command! You need at least "+bet+"<:Coin:439199818447978508>")
+            await bot.say("You do not have enough coins to do this command! You need at least "+bet+"<:coin:456086215909965825>")
     else:
         await bot.say("You need to input an amount to bet (1 or more)!")
    
@@ -696,7 +696,7 @@ async def coinflip(ctx,bet=None,*,guess):
                 await bot.delete_message(ctx.message)
                 await bot.say(" Hey <@%s> You need to be in <#455856117516337179> to use -coinflip !" % (userID))
         else:
-            await bot.say("You do not have enough coins to do this command! You need at least "+bet+"<:Coin:439199818447978508>")
+            await bot.say("You do not have enough coins to do this command! You need at least "+bet+"<:coin:456086215909965825>")
     else:
         await bot.say("You need to input an amount to bet (1 or more)!")
     
@@ -1050,7 +1050,7 @@ async def on_message(message,):
                                             await bot.send_message(message.channel,embed=embed)
                                         elif randdrop == 10:
                                             dbhandler.randomdrop(message)
-                                            await bot.send_message(message.channel,message.author.display_name+" has received 100<:Coin:439199818447978508> as a random drop!")
+                                            await bot.send_message(message.channel,message.author.display_name+" has received 100<:coin:456086215909965825> as a random drop!")
     await bot.process_commands(message)
        
     
