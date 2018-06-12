@@ -21,7 +21,7 @@ def add_me(ctx):
 	rows = c.fetchall()
 	string = '\n'.join(str(row) for row in rows)
 	if not str(ctx.message.author.id) in string:
-		c.execute("INSERT INTO loungebot VALUES(%s,%s,0,0,0,0)",(ctx.message.author.diplay_name,ctx.message.author.id))
+		c.execute("INSERT INTO loungebot VALUES(%s,%s,0,0,0,0)",(ctx.message.author.display_name,ctx.message.author.id))
 		conn.commit()
 
 
@@ -30,7 +30,7 @@ def addonmessage(message):
 	rows = c.fetchall()
 	string = '\n'.join(str(row) for row in rows)
 	if not str(message.author.id) in string:
-		c.execute("INSERT INTO loungebot VALUES(%s,%s,0,0,0,0)",(message.author.diplay_name,message.author.id))
+		c.execute("INSERT INTO loungebot VALUES(%s,%s,0,0,0,0)",(message.author.display_name,message.author.id))
 		conn.commit()
 
 def leaderboard():
