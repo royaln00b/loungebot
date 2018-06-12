@@ -36,7 +36,7 @@ def addonmessage(message):
 def leaderboard():
 	c.execute('SELECT name, balance FROM loungebot ORDER BY balance DESC LIMIT 5')
 	rows = c.fetchall()
-	lines = '\n'.join(f'{i+1}. {line}<:Coin:439199818447978508>' for i, line in enumerate(rows))
+	lines = '\n'.join(f'{i+1}. {line}<:coin:456086215909965825>' for i, line in enumerate(rows))
 	return lines
 	
 def everyone():
@@ -98,7 +98,7 @@ def donate(ctx,member,amount):
 		if int(amount) >= 1:
 			c.execute('UPDATE loungebot SET balance = balance + %s WHERE userid = %s', (amount,member.id,))
 			c.execute('UPDATE loungebot SET balance = balance - %s WHERE userid = %s', (amount,ctx.message.author.id,))
-			message = ctx.message.author.mention+" gave "+member.mention+" "+amount+"<:Coin:439199818447978508>"
+			message = ctx.message.author.mention+" gave "+member.mention+" "+amount+"<:coin:456086215909965825>"
 		else:
 			if int(amount) == 0:
 				message = ctx.message.author.mention+", you can't give someone nothing!"
@@ -119,7 +119,7 @@ def balance(ctx):
 		data1 = data.replace("(","")
 		data2 = data1.replace(")","")
 		data3 = data2.replace(",","")
-		data4 = data3+" <:Coin:439199818447978508>"
+		data4 = data3+" <:coin:456086215909965825>"
 	return data4
 	
 	
@@ -146,7 +146,7 @@ def whoisbalance(member):
 		data1 = data.replace("(","")
 		data2 = data1.replace(")","")
 		data3 = data2.replace(",","")
-		data4 = data3+" <:Coin:439199818447978508>"
+		data4 = data3+" <:coin:456086215909965825>"
 	return data4
 
 def whoislevel(member):
