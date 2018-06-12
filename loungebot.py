@@ -1143,7 +1143,6 @@ async def on_message(message,):
                                 if message.author.id != "202930020396564489":
                                     if message.channel.id != "420775325270802452":
                                         dbhandler.addonmessage(message)
-                                        dbhandler.addonmessagenames(message)
                                         dbhandler.xp(message)
                                         randdrop = int(random.choice(_random))
                                         if dbhandler.xpcheck(message) is True:
@@ -1153,18 +1152,6 @@ async def on_message(message,):
                                         elif randdrop == 10:
                                             dbhandler.randomdrop(message)
                                             await bot.send_message(message.channel,message.author.display_name+" has received 100<:Coin:439199818447978508> as a random drop!")
-                                        elif int(dbhandler.checkbal(message)) >= 10000 and not "rich" in [y.name.lower() for y in message.author.roles]:
-                                            await bot.add_roles(message.author,discord.utils.get(message.server.roles, name="Rich"))
-                                            embed = discord.Embed(title="Achievement! | "+message.author.display_name,description=message.author.display_name+" earnt the achievement :dollar:Rich:dollar: !",colour=0xEE82EE)
-                                            await bot.send_message(message.channel,embed=embed)
-                                        elif int(dbhandler.checkbal(message)) >= 500000 and not "baller" in [y.name.lower() for y in message.author.roles]:
-                                            await bot.add_roles(message.author,discord.utils.get(message.server.roles, name="Baller"))
-                                            embed = discord.Embed(title="Achievement! | "+message.author.display_name,description=message.author.display_name+" earnt the achievement :moneybag:Baller:moneybag: !",colour=0xEE82EE)
-                                            await bot.send_message(message.channel,embed=embed)
-                                        elif int(dbhandler.checkbal(message)) >= 1000000 and not "millionaire" in [y.name.lower() for y in message.author.roles]:
-                                            await bot.add_roles(message.author,discord.utils.get(message.server.roles, name="Millionaire"))
-                                            embed = discord.Embed(title="Achievement! | "+message.author.display_name,description=message.author.display_name+" earnt the achievement :moneybag:Millionaire:moneybag: !",colour=0xEE82EE)
-                                            await bot.send_message(message.channel,embed=embed)
     await bot.process_commands(message)
        
     
