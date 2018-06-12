@@ -105,7 +105,7 @@ def donate(ctx,member,amount):
 			else:
 				message = ctx.message.author.mention+", you can't steal from someone :wink:"
 	else:
-		message = "You do not have enough <:Coin:439199818447978508> to do this!"
+		message = "You do not have enough <:coin:456086215909965825> to do this!"
 	return message
 
 	
@@ -140,7 +140,7 @@ def whoisbalance(member):
 	c.execute('SELECT balance FROM loungebot WHERE userid= %s' , (member.id,))
 	data = c.fetchone()
 	if data is None:
-		data4 = "Not added to chill bot!"
+		data4 = "Not added!"
 	else:
 		data = str(data)
 		data1 = data.replace("(","")
@@ -153,7 +153,7 @@ def whoislevel(member):
     c.execute('SELECT level FROM loungebot WHERE userid= %s', (member.id,))
     data = c.fetchone()
     if data is None:
-        data3 = "https://cdn.discordapp.com/attachments/426305280955908096/440175663001894932/Level0.png"
+        data3 = "https://cdn.discordapp.com/attachments/456076729312870400/456093614477541386/no2.png"
     else:
         data = str(data)
         data1 = data.replace("(","")
