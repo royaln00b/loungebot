@@ -107,7 +107,7 @@ async def leaderboard(ctx):
 	status5 = status4.replace("(","")
 	status6 = status5.replace(")","")
 	status7 = status6.replace(","," -")
-	embed = discord.Embed(title="Leaderboard",description=status7, color=0xEE82EE)
+	embed = discord.Embed(title="Leaderboard",description=status7, color=0xFF0000)
 	embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/426305280955908096/443863093445918731/Untitled.png")
 	embed.set_footer(text="Requested by : "+ctx.message.author.display_name, icon_url=ctx.message.author.avatar_url)
 	await bot.say(embed = embed)
