@@ -1226,7 +1226,7 @@ zkey = "q"
 @bot.event
 async def on_ready():
 	embed=discord.Embed(title="Bot restart",description="✅ All systems good ✅\nTime deployed : "+str(datetime.datetime.utcfromtimestamp(int(time.time())).strftime("`%H:%M:%S UTC` -- `%-d-%b-%Y`")),colour=0xEE82EE)
-	channel = discord.utils.get(bot.get_all_channels(), server__name="Avvie's Chill Server :3", name='chill-bot-test')
+	channel = discord.utils.get(bot.get_all_channels(), server__name="Lounge About", name='bot-test')
 	await bot.send_message(channel, embed=embed)
 	while zkey == "q":
 		await asyncio.sleep(30)
