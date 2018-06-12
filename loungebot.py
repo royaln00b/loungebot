@@ -64,7 +64,7 @@ async def daily(ctx):
 	if ctx.message.channel.id == "455856117516337179":
 		if dbhandler.daily(ctx) == True:
 			await bot.add_reaction(message = ctx.message, emoji = "✅")
-			embed = discord.Embed(title="Daily | "+ctx.message.author.display_name,description="**Added 100<:coin:456086215909965825>!**\nBe sure to use -daily again tomorrow to gain another 100<:Coin:439199818447978508>!",colour=0x00FF15)
+			embed = discord.Embed(title="Daily | "+ctx.message.author.display_name,description="**Added 100<:coin:456086215909965825>!**\nBe sure to use -daily again tomorrow to gain another 100<:Coin:439199818447978508>!",colour=0xFF0000)
 		else:
 			await bot.add_reaction(message = ctx.message, emoji = "🚫")
 			embed = discord.Embed(title="Daily | "+ctx.message.author.display_name,description="You have already claimed your daily today!\nYou can use this command again in "+dbhandler.getdaily(ctx)+" !",colour=0xFF0000)
@@ -78,13 +78,13 @@ async def daily(ctx):
        
 @bot.command(pass_context=True)
 async def xp(ctx):
-    embed=discord.Embed(title=ctx.message.author.display_name+" | XP",description="You have "+dbhandler.xpfind(ctx)+" / "+dbhandler.xplevel(ctx)+"xp!",colour=0xEE82EE)
+    embed=discord.Embed(title=ctx.message.author.display_name+" | XP",description="You have "+dbhandler.xpfind(ctx)+" / "+dbhandler.xplevel(ctx)+"xp!",colour=0xFF0000)
     embed.set_thumbnail(url = ctx.message.author.avatar_url)
     await bot.say(embed=embed)
        
 @bot.command(pass_context=True)
 async def level(ctx):
-    embed = discord.Embed(title="Level | "+ctx.message.author.display_name,description=None,colour=0xEE82EE)
+    embed = discord.Embed(title="Level | "+ctx.message.author.display_name,description=None,colour=0xFF0000)
     embed.set_thumbnail(url = dbhandler.level(ctx))
     await bot.send_message(ctx.message.channel,embed=embed)
        
@@ -93,7 +93,7 @@ async def balance(ctx,*,member:discord.Member=None):
 	if member == None:
 		member = ctx.message.author
 	dbhandler.add_me(ctx)
-	embed=discord.Embed(title="Balance | "+member.display_name,description="**"+str(dbhandler.whoisbalance(member))+"\nNice**!",colour=0xEE82EE)
+	embed=discord.Embed(title="Balance | "+member.display_name,description="**"+str(dbhandler.whoisbalance(member))+"\nNice**!",colour=0xFF0000)
 	embed.set_thumbnail(url = member.avatar_url)
 	embed.set_footer(text="Requested by : "+ctx.message.author.display_name, icon_url=ctx.message.author.avatar_url)
 	await bot.say(embed=embed)
@@ -122,7 +122,7 @@ async def everyone(ctx):
     status5 = status4.replace("(","")
     status6 = status5.replace(")","")
     status7 = status6.replace(","," -")
-    embed = discord.Embed(title="Everyone (name,balance,level)",description=status7, color=0xEE82EE)
+    embed = discord.Embed(title="Everyone (name,balance,level)",description=status7, color=0xFF0000)
     await bot.say(embed = embed)
     
 @commands.has_role("Management")
@@ -135,7 +135,7 @@ async def everyonenames(ctx):
     status5 = status4.replace("(","")
     status6 = status5.replace(")","")
     status7 = status6.replace(","," -")
-    embed = discord.Embed(title="Everyone",description=status7, color=0xEE82EE)
+    embed = discord.Embed(title="Everyone",description=status7, color=0xFF0000)
     await bot.say(embed = embed)
     
 @bot.command()
@@ -148,13 +148,13 @@ keyz = "q"
 async def help(ctx,*,command=None):
     if command == None:
         await bot.add_reaction(message = ctx.message, emoji = "✅")
-        embed1 = discord.Embed(title = "Chill Bot" , description = "Hey! Welcome the the -help handbook.\nHere you can find out all the commands you can use in Avvie's Chill Server\nEnjoy your stay :)\nTo look at how to use a command do -help [command] to see how it works!\n\nIf you have any questions regarding the bot/commands, PM Royalnoob\nThanks to these amazing people the bot would not be as amazing as it is today!\nRoyalnoob\nCallum\nSesmic\nAvvie",colour = 0xEE82EE)
-        embed2 = discord.Embed(title = "Utility    Page 1 / 6" , description = "-status - Check if the bot is online\n-ping - Check the relay speed of the bot\n-uptime - See how long the bot has been online for\n-date - Show the date\n-profile - Shows information about the member / yourself if left blank\n-achievemnets - Show all available achievements",colour = 0xEE82EE)
-        embed3 = discord.Embed(title = "Actions    Page 2 / 6" , description = "-hug - Hug a member\n-kiss - Kiss a member\n-lick - Lick another member\n-slap - Slap another member\n-pat - Pat another member\n-cuddle - Cuddle woth another member\n-pout - To pout\n-bite - Bite another member",colour = 0xEE82EE)
-        embed4 = discord.Embed(title = "Chill Currency    Page 3 / 6" , description = "-balance/-b - Check your balance\n-leaderboard/-l - Check who the top 5 richest people on the server are\n-daily - Collect your daily Chill Coins\n-level - Check what level you are\n-xp - Check how much xp you have\n-donate - Donate your coins to another member\n-shop - See what you can buy with your Chill Coins",colour = 0xEE82EE)
-        embed5 = discord.Embed(title = "Games    Page 4 / 6" , description = "-8ball - Ask the Chill Bot a yes or no question\n-guess - Guess a random number between 1 and 10\n-flip - Flip a coin\n-rps - Rock paper scissors\n-coinflip - Flip a coin and earn chill currency\n-slot - (VIP only) Run a slot machine with a max prize of 10x your bet!\n-rtd - Roll The dice. Roll a 5 or 6 and you win!",colour = 0xEE82EE)  
-        embed6 = discord.Embed(title = "Self Assignable Roles    Page 5 / 6" , description = "-colors - Check what colors you can assign\n-colorme - Add yourself to a color\n-uncolorme - Remove yourself from a color",colour = 0xEE82EE)
-        embed7 = discord.Embed(title = "Pings    Page 6 / 6" , description = "-mug - Pings the maker of Chill bot!\n-siccwan - Pings the server owner\n-neko - Pings the chaotic neko\n-yiff - Pings our local furry\n-urmomgay - Pings Callum\n-alwayswatching - Pings the big sister",colour = 0xEE82EE)   
+        embed1 = discord.Embed(title = "Chill Bot" , description = "Hey! Welcome the the -help handbook.\nHere you can find out all the commands you can use in Avvie's Chill Server\nEnjoy your stay :)\nTo look at how to use a command do -help [command] to see how it works!\n\nIf you have any questions regarding the bot/commands, PM Royalnoob\nThanks to these amazing people the bot would not be as amazing as it is today!\nRoyalnoob\nCallum\nSesmic\nAvvie",colour = 0xFF0000)
+        embed2 = discord.Embed(title = "Utility    Page 1 / 6" , description = "-status - Check if the bot is online\n-ping - Check the relay speed of the bot\n-uptime - See how long the bot has been online for\n-date - Show the date\n-profile - Shows information about the member / yourself if left blank\n-achievemnets - Show all available achievements",colour = 0xFF0000)
+        embed3 = discord.Embed(title = "Actions    Page 2 / 6" , description = "-hug - Hug a member\n-kiss - Kiss a member\n-lick - Lick another member\n-slap - Slap another member\n-pat - Pat another member\n-cuddle - Cuddle woth another member\n-pout - To pout\n-bite - Bite another member",colour = 0xFF0000)
+        embed4 = discord.Embed(title = "Chill Currency    Page 3 / 6" , description = "-balance/-b - Check your balance\n-leaderboard/-l - Check who the top 5 richest people on the server are\n-daily - Collect your daily Chill Coins\n-level - Check what level you are\n-xp - Check how much xp you have\n-donate - Donate your coins to another member\n-shop - See what you can buy with your Chill Coins",colour = 0xFF0000)
+        embed5 = discord.Embed(title = "Games    Page 4 / 6" , description = "-8ball - Ask the Chill Bot a yes or no question\n-guess - Guess a random number between 1 and 10\n-flip - Flip a coin\n-rps - Rock paper scissors\n-coinflip - Flip a coin and earn chill currency\n-slot - (VIP only) Run a slot machine with a max prize of 10x your bet!\n-rtd - Roll The dice. Roll a 5 or 6 and you win!",colour = 0xFF0000)  
+        embed6 = discord.Embed(title = "Self Assignable Roles    Page 5 / 6" , description = "-colors - Check what colors you can assign\n-colorme - Add yourself to a color\n-uncolorme - Remove yourself from a color",colour = 0xFF0000)
+        embed7 = discord.Embed(title = "Pings    Page 6 / 6" , description = "-mug - Pings the maker of Chill bot!\n-siccwan - Pings the server owner\n-neko - Pings the chaotic neko\n-yiff - Pings our local furry\n-urmomgay - Pings Callum\n-alwayswatching - Pings the big sister",colour = 0xFF0000)   
         message = await bot.send_message(ctx.message.author,embed=embed1)
         await bot.add_reaction(message = message, emoji = "▶")
         while keyz == "q":
@@ -353,19 +353,19 @@ async def slot(ctx,bet=None):
             bet = int(bet)
             if dbhandler.checkforbet(ctx,bet) == True:
                 if bet >= 1:
-                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:coin:456086215909965825>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:coin:456086215909965825>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:coin:456086215909965825>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:coin:456086215909965825>\n5. 2 🍒's - "+str(bet*2)+"<:coin:456086215909965825>\n6. 1 🍒 - Your "+str(bet)+"<:coin:456086215909965825> back\n\nThe slot machine will spin in 5 seconds!",colour=0xEE82EE)
+                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:coin:456086215909965825>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:coin:456086215909965825>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:coin:456086215909965825>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:coin:456086215909965825>\n5. 2 🍒's - "+str(bet*2)+"<:coin:456086215909965825>\n6. 1 🍒 - Your "+str(bet)+"<:coin:456086215909965825> back\n\nThe slot machine will spin in 5 seconds!",colour=0xFF0000)
                     message = await bot.say(embed=embed)
                     await asyncio.sleep(1)
-                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:coin:456086215909965825>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:coin:456086215909965825>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:coin:456086215909965825>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:coin:456086215909965825>\n5. 2 🍒's - "+str(bet*2)+"<:coin:456086215909965825>\n6. 1 🍒 - Your "+str(bet)+"<:coin:456086215909965825> back\n\nThe slot machine will spin in 4 seconds!",colour=0xEE82EE)
+                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:coin:456086215909965825>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:coin:456086215909965825>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:coin:456086215909965825>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:coin:456086215909965825>\n5. 2 🍒's - "+str(bet*2)+"<:coin:456086215909965825>\n6. 1 🍒 - Your "+str(bet)+"<:coin:456086215909965825> back\n\nThe slot machine will spin in 4 seconds!",colour=0xFF0000)
                     await bot.edit_message(message=message,embed=embed)
                     await asyncio.sleep(1)
-                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:coin:456086215909965825>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:coin:456086215909965825>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:coin:456086215909965825>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:coin:456086215909965825>\n5. 2 🍒's - "+str(bet*2)+"<:coin:456086215909965825>\n6. 1 🍒 - Your "+str(bet)+"<:coin:456086215909965825> back\n\nThe slot machine will spin in 3 seconds!",colour=0xEE82EE)
+                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:coin:456086215909965825>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:coin:456086215909965825>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:coin:456086215909965825>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:coin:456086215909965825>\n5. 2 🍒's - "+str(bet*2)+"<:coin:456086215909965825>\n6. 1 🍒 - Your "+str(bet)+"<:coin:456086215909965825> back\n\nThe slot machine will spin in 3 seconds!",colour=0xFF0000)
                     await bot.edit_message(message=message,embed=embed)
                     await asyncio.sleep(1)
-                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:coin:456086215909965825>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:coin:456086215909965825>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:coin:456086215909965825>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:coin:456086215909965825>\n5. 2 🍒's - "+str(bet*2)+"<:coin:456086215909965825>\n6. 1 🍒 - Your "+str(bet)+"<:coin:456086215909965825> back\n\nThe slot machine will spin in 2 seconds!",colour=0xEE82EE)
+                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:coin:456086215909965825>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:coin:456086215909965825>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:coin:456086215909965825>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:coin:456086215909965825>\n5. 2 🍒's - "+str(bet*2)+"<:coin:456086215909965825>\n6. 1 🍒 - Your "+str(bet)+"<:coin:456086215909965825> back\n\nThe slot machine will spin in 2 seconds!",colour=0xFF0000)
                     await bot.edit_message(message=message,embed=embed)
                     await asyncio.sleep(1)
-                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:coin:456086215909965825>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:coin:456086215909965825>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:coin:456086215909965825>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:coin:456086215909965825>\n5. 2 🍒's - "+str(bet*2)+"<:coin:456086215909965825>\n6. 1 🍒 - Your "+str(bet)+"<:coin:456086215909965825> back\n\nThe slot machine will spin in 1 seconds!",colour=0xEE82EE)
+                    embed=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Welcome to the slot machine!\n\nThe possible winnings are:\n1. 🍫 🍫 🍫 - "+str(bet*10)+"<:coin:456086215909965825>\n2. 🔔 🔔 🔔/🍫 - "+str(bet*5)+"<:coin:456086215909965825>\n3. 🍇 🍇 🍇/🍫 - "+str(bet*4)+"<:coin:456086215909965825>\n4. 🍊 🍊 🍊/🍫 - "+str(bet*3)+"<:coin:456086215909965825>\n5. 2 🍒's - "+str(bet*2)+"<:coin:456086215909965825>\n6. 1 🍒 - Your "+str(bet)+"<:coin:456086215909965825> back\n\nThe slot machine will spin in 1 seconds!",colour=0xFF0000)
                     await bot.edit_message(message=message,embed=embed)
                     await asyncio.sleep(1)
                     _items = ["🍒","🍋","🍊","🍇","🔔","🍫"]
@@ -375,87 +375,87 @@ async def slot(ctx,bet=None):
                     if wheel1 == "🍫" and wheel2 == "🍫" and wheel3 == "🍫":
                         bet = bet*10
                         bet = str(bet)
-                        embed1=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
+                        embed1=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xFF0000)
                         await bot.edit_message(message=message,embed=embed1)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🔔" and wheel2 == "🔔" and wheel3 == "🔔":
                         bet = bet*5
                         bet = str(bet)
-                        embed2=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
+                        embed2=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xFF0000)
                         await bot.edit_message(message=message,embed=embed2)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🔔" and wheel2 == "🔔" and wheel3 == "🍫":
                         bet = bet*5
                         bet = str(bet)
-                        embed3=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
+                        embed3=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xFF0000)
                         await bot.edit_message(message=message,embed=embed3)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🍇" and wheel2 == "🍇" and wheel3 == "🍇":
                         bet = bet*4
                         bet = str(bet)
-                        embed4=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
+                        embed4=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xFF0000)
                         await bot.edit_message(message=message,embed=embed4)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🍇" and wheel2 == "🍇" and wheel3 == "🍫":
                         bet = bet*4
                         bet = str(bet)
-                        embed5=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
+                        embed5=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xFF0000)
                         await bot.edit_message(message=message,embed=embed5)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🍊" and wheel2 == "🍊" and wheel3 == "🍊":
                         bet = bet*3
                         bet = str(bet)
-                        embed6=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
+                        embed6=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xFF0000)
                         await bot.edit_message(message=message,embed=embed6)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🍊" and wheel2 == "🍊" and wheel3 == "🍫":
                         bet = bet*3
                         bet = str(bet)
-                        embed7=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
+                        embed7=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xFF0000)
                         await bot.edit_message(message=message,embed=embed7)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🍒" and wheel2 == "🍒" and wheel3 == "🍒":
                         bet = bet*2
                         bet = str(bet)
-                        embed8=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
+                        embed8=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xFF0000)
                         await bot.edit_message(message=message,embed=embed8)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🍒" and wheel2 == "🍒":
                         bet = bet*2
                         bet = str(bet)
-                        embed9=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
+                        embed9=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xFF0000)
                         await bot.edit_message(message=message,embed=embed9)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🍒" and wheel3 == "🍒":
                         bet = bet*2
                         bet = str(bet)
-                        embed10=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
+                        embed10=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xFF0000)
                         await bot.edit_message(message=message,embed=embed10)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel2 == "🍒" and wheel3 == "🍒":
                         bet = bet*2
                         bet = str(bet)
-                        embed11=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xEE82EE)
+                        embed11=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou win!! - "+bet+"<:coin:456086215909965825>",colour=0xFF0000)
                         await bot.edit_message(message=message,embed=embed11)
                         bet = int(bet)
                         dbhandler.win(ctx,bet)
                     elif wheel1 == "🍒" and wheel2 != "🍒" and wheel3 != "🍒" or wheel2 == "🍒" and wheel1 != "🍒" and wheel3 != "🍒" or wheel3 == "🍒" and wheel2 != "🍒" and wheel1 != "🍒" :
                         bet = str(bet)
-                        embed12=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou get your "+bet+"<:coin:456086215909965825> back!",colour=0xEE82EE)
+                        embed12=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou get your "+bet+"<:coin:456086215909965825> back!",colour=0xFF0000)
                         await bot.edit_message(message=message,embed=embed12)
                         bet = int(bet)
                     else:
                         bet = str(bet)
-                        embed13=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou lose!! - "+bet+"<:coin:456086215909965825>" ,colour=0xEE82EE)
+                        embed13=discord.Embed(title="Slot Machine | "+ctx.message.author.display_name,description="Your machine has spun :\n\n"+wheel1+" - "+wheel2+" - "+wheel3+"\n\nYou lose!! - "+bet+"<:coin:456086215909965825>" ,colour=0xFF0000)
                         await bot.edit_message(message=message,embed=embed13)
                         bet = int(bet)
                         dbhandler.lose(ctx,bet)
@@ -516,7 +516,7 @@ async def profile(ctx,*,member:discord.Member=None):
 	if member == None:
 		member = ctx.message.author
 	toprole = member.top_role
-	embed=discord.Embed(title = member.name , description="Top role of : **"+str(toprole)+"**\n\nJoined discord at : "+str(member.created_at)[:10]+"\nJoined this server at : "+str(member.joined_at)[:10]+"\nCurrently playing : "+str(member.game)+"\nCurrent status : "+str(member.status)+"\n\n**Balance :** " +dbhandler.whoisbalance(member), colour = 0xEE82EE)
+	embed=discord.Embed(title = member.name , description="Top role of : **"+str(toprole)+"**\n\nJoined discord at : "+str(member.created_at)[:10]+"\nJoined this server at : "+str(member.joined_at)[:10]+"\nCurrently playing : "+str(member.game)+"\nCurrent status : "+str(member.status)+"\n\n**Balance :** " +dbhandler.whoisbalance(member), colour = 0xFF0000)
 	embed.set_thumbnail(url = member.avatar_url)
 	embed.set_image(url = str(dbhandler.whoislevel(member)))
 	embed.set_footer(text="Requested by : "+ctx.message.author.display_name, icon_url=ctx.message.author.avatar_url)
@@ -526,7 +526,7 @@ async def profile(ctx,*,member:discord.Member=None):
 async def avatar(ctx,*,member:discord.Member=None):
 	if member == None:
 		member = ctx.message.author
-	embed=discord.Embed(title="Avatar of "+member.display_name,description=None,colour=0xEE82EE)
+	embed=discord.Embed(title="Avatar of "+member.display_name,description=None,colour=0xFF0000)
 	embed.set_image(url = member.avatar_url)
 	embed.set_footer(text="Requested by : "+ctx.message.author.display_name, icon_url=ctx.message.author.avatar_url)
 	await bot.send_message(ctx.message.channel,embed=embed)
@@ -660,21 +660,21 @@ async def coinflip(ctx,bet=None,*,guess):
         if dbhandler.checkforbet(ctx,bet) == True:
             if ctx.message.channel.id == "455856117516337179":
                 if guess.upper() in _coin:
-                    embed=discord.Embed(title="Coinflip! | "+ctx.message.author.display_name,description="Flipping coin....",colour=0xEE82EE)
+                    embed=discord.Embed(title="Coinflip! | "+ctx.message.author.display_name,description="Flipping coin....",colour=0xFF0000)
                     message = await bot.say(embed=embed)
-                    embed2=discord.Embed(title="Coinflip! | "+ctx.message.author.display_name,description="3",colour=0xEE82EE)
+                    embed2=discord.Embed(title="Coinflip! | "+ctx.message.author.display_name,description="3",colour=0xFF0000)
                     await asyncio.sleep(1)
                     await bot.edit_message(message=message,embed=embed2)
-                    embed3=discord.Embed(title="Coinflip! | "+ctx.message.author.display_name,description="2",colour=0xEE82EE)
+                    embed3=discord.Embed(title="Coinflip! | "+ctx.message.author.display_name,description="2",colour=0xFF0000)
                     await asyncio.sleep(1)
                     await bot.edit_message(message=message,embed=embed3)
-                    embed4=discord.Embed(title="Coinflip! | "+ctx.message.author.display_name,description="1",colour=0xEE82EE)
+                    embed4=discord.Embed(title="Coinflip! | "+ctx.message.author.display_name,description="1",colour=0xFF0000)
                     await asyncio.sleep(1)
                     await bot.edit_message(message=message,embed=embed4)
                     await asyncio.sleep(1)
                     flippedcoin=random.choice(_coin)
                     if guess.upper() == flippedcoin:
-                        embedwin=discord.Embed(title="Coinflip! | "+ctx.message.author.display_name,description=ctx.message.author.display_name+", You win!",colour=0xEE82EE)
+                        embedwin=discord.Embed(title="Coinflip! | "+ctx.message.author.display_name,description=ctx.message.author.display_name+", You win!",colour=0xFF0000)
                         if guess.upper() == "HEADS":
                             embedwin.set_thumbnail(url = "https://cdn.discordapp.com/attachments/426305280955908096/444466474095083521/coinheads_1.png")
                         if guess.upper() == "TAILS":
@@ -682,7 +682,7 @@ async def coinflip(ctx,bet=None,*,guess):
                         await bot.edit_message(message=message,embed=embedwin)
                         dbhandler.win(ctx,bet)
                     else:
-                        embedlose=discord.Embed(title="Coinflip! | "+ctx.message.author.display_name,description=ctx.message.author.display_name+", You lose!",colour=0xEE82EE)
+                        embedlose=discord.Embed(title="Coinflip! | "+ctx.message.author.display_name,description=ctx.message.author.display_name+", You lose!",colour=0xFF0000)
                         if guess.upper() == "TAILS":
                             embedlose.set_thumbnail(url = "https://cdn.discordapp.com/attachments/426305280955908096/444466474095083521/coinheads_1.png")
                         if guess.upper() == "HEADS":
@@ -919,13 +919,13 @@ async def ping(ctx):
 async def admin(ctx):
     if "manager" in [y.name.lower() for y in ctx.message.author.roles]:
         await bot.add_reaction(ctx.message,"✅")
-        embed=discord.Embed(title="Staff Commands:", description="1. mute [member] - To mute a member \n2. unmute [muted member] - To unmute a muted member \n3. warn [member] [reason] - Warn a member", color = 0xEE82EE)
+        embed=discord.Embed(title="Staff Commands:", description="1. mute [member] - To mute a member \n2. unmute [muted member] - To unmute a muted member \n3. warn [member] [reason] - Warn a member", color = 0xFF0000)
         await bot.send_message(ctx.message.author,embed=embed)
         if "manager" in [y.name.lower() for y in ctx.message.author.roles]:
-            embed=discord.Embed(title="Admin Commands:", description="1. kick [member] - Kicks a member \n2. ban [member] [reason] - Bans a member", color = 0xEE82EE)
+            embed=discord.Embed(title="Admin Commands:", description="1. kick [member] - Kicks a member \n2. ban [member] [reason] - Bans a member", color = 0xFF0000)
             await bot.send_message(ctx.message.author,embed=embed)
             if "manager" in [y.name.lower() for y in ctx.message.author.roles]:
-                embed=discord.Embed(title="Manager Commands:", description="1. purge [x] - Deletes select amount of messages \n2. say [X] - Makes the bot say something", color = 0xEE82EE)
+                embed=discord.Embed(title="Manager Commands:", description="1. purge [x] - Deletes select amount of messages \n2. say [X] - Makes the bot say something", color = 0xFF0000)
                 await bot.send_message(ctx.message.author,embed=embed)
     else:
         await bot.add_reaction(ctx.message,"❌")
@@ -1045,7 +1045,7 @@ async def on_message(message,):
                                         dbhandler.xp(message)
                                         randdrop = int(random.choice(_random))
                                         if dbhandler.xpcheck(message) is True:
-                                            embed = discord.Embed(title = "Level UP!",description = message.author.display_name,colour=0xEE82EE)
+                                            embed = discord.Embed(title = "Level UP!",description = message.author.display_name,colour=0xFF0000)
                                             embed.set_thumbnail(url = dbhandler.eventlevel(message))
                                             await bot.send_message(message.channel,embed=embed)
                                         elif randdrop == 10:
@@ -1111,7 +1111,7 @@ async def on_member_remove(member):
 zkey = "q"
 @bot.event
 async def on_ready():
-	embed=discord.Embed(title="Bot restart",description="✅ All systems good ✅\nTime deployed : "+str(datetime.datetime.utcfromtimestamp(int(time.time())).strftime("`%H:%M:%S UTC` -- `%-d-%b-%Y`")),colour=0xEE82EE)
+	embed=discord.Embed(title="Bot restart",description="✅ All systems good ✅\nTime deployed : "+str(datetime.datetime.utcfromtimestamp(int(time.time())).strftime("`%H:%M:%S UTC` -- `%-d-%b-%Y`")),colour=0xFF0000)
 	channel = discord.utils.get(bot.get_all_channels(), server__name="Lounge About", name='bot-test')
 	await bot.send_message(channel, embed=embed)
 	while zkey == "q":
