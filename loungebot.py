@@ -61,7 +61,7 @@ async def donate(ctx,member:discord.Member,amount):
 
 @bot.command(pass_context=True, aliases=["d"])
 async def daily(ctx):
-	if ctx.message.channel.id == "419010194673106944":
+	if ctx.message.channel.id == "455856117516337179":
 		if dbhandler.daily(ctx) == True:
 			await bot.add_reaction(message = ctx.message, emoji = "✅")
 			embed = discord.Embed(title="Daily | "+ctx.message.author.display_name,description="**Added 100<:Coin:439199818447978508>!**\nBe sure to use -daily again tomorrow to gain another 100<:Coin:439199818447978508>!",colour=0x00FF15)
@@ -72,7 +72,7 @@ async def daily(ctx):
 	else:
 		userID = ctx.message.author.id
 		await bot.delete_message(ctx.message)
-		await bot.say(" Hey <@%s> You need to be in <#419010194673106944> to use -daily !" % (userID))
+		await bot.say(" Hey <@%s> You need to be in <#455856117516337179> to use -daily !" % (userID))
 		
            
        
@@ -470,10 +470,7 @@ async def slot(ctx,bet=None):
     else:
         await bot.say(ctx.message.author.display_name+", This is a VIP command! You can buy VIP for 1000<:Coin:439199818447978508> using -buyvip")
 
-       
-@bot.command()
-async def siccwan():
-    await bot.say("<@343198137869008907>") #done
+
        
 @bot.command()
 async def logs():
@@ -503,7 +500,6 @@ async def status():
     await bot.say(":white_check_mark: Bot Online :white_check_mark:") #done
            
 
-       
 @bot.command(pass_context=True)
 async def creator(ctx):
     if ctx.message.author.id == "379303619545137152":
@@ -511,11 +507,7 @@ async def creator(ctx):
     else:
         await bot.say("Hmmmm, you're not Royal -_-")
 
-@bot.command(pass_context=True,aliases=["a","ach"])
-async def achievements(ctx):
-	await bot.add_reaction(message = ctx.message, emoji = "✅")
-	embed=discord.Embed(title="Achievements",description="1. :dizzy: - Chill Bot Developer\n2. :zap: - Server Staff\n3. :books: - Informed\n4. :dollar: - Reach 10k<:Coin:439199818447978508>\n5. :money_with_wings: - Reach 500k<:Coin:439199818447978508>\n6. :moneybag: - Reach 1m<:Coin:439199818447978508>\n7. :performing_arts: - Reach Level 10 (First prestige)\n8. :rosette: - Reach Level 20 (First Prestige)\n9. :trophy: - Reach Level 10 (Second Prestige)\n10. :reminder_ribbon: - Reach Level 20 (Second Prestige)\n11. :dart: - 2 achievements\n12. :medal: - 5 achievements",colour=0xEE82EE)
-	await bot.send_message(ctx.message.author,embed=embed)
+
 
 #roles = [role.name for role in member.roles[1:]] - Use for later reference. (Shows all roles)
 
@@ -540,15 +532,6 @@ async def avatar(ctx,*,member:discord.Member=None):
 	await bot.send_message(ctx.message.channel,embed=embed)
 
 
-
-@commands.has_role("Management")
-@bot.command(pass_context=True)
-async def applytimer(ctx):
-    timer = 'q'
-    while timer == 'q':
-        await bot.send_message(ctx.message.server.get_channel("413580303248916483"), "Remember you can always apply for staff using /apply!")
-        await asyncio.sleep(43200)
-       
     
        
 _rps=["rock","paper","scissors"]
@@ -557,7 +540,7 @@ _rps=["rock","paper","scissors"]
 async def rps(ctx,bet=None,*,choice):
     if bet != None and int(bet) >= 1:
         if dbhandler.checkforbet(ctx,bet) == True:
-            if ctx.message.channel.id == "419010194673106944":
+            if ctx.message.channel.id == "455856117516337179":
                 botchoice=random.choice(_rps)
                 if choice.lower() == botchoice.lower():
                     await bot.say("Draw! I chose "+str(botchoice)+". You get your money back!")
@@ -586,7 +569,7 @@ async def rps(ctx,bet=None,*,choice):
             else:
                 userID = ctx.message.author.id
                 await bot.delete_message(ctx.message)
-                await bot.say(" Hey <@%s> You need to be in <#419010194673106944> to use -rps !" % (userID))
+                await bot.say(" Hey <@%s> You need to be in <#455856117516337179> to use -rps !" % (userID))
         else:
             await bot.say("You do not have enough coins to do this command! You need at least "+bet+"<:Coin:439199818447978508>")
     else:
@@ -598,7 +581,7 @@ _rtd=["1","2","3", "4", "5", "6"]
 async def rtd(ctx,bet=None):
     if bet != None and int(bet) >= 1:
         if dbhandler.checkforbet(ctx,bet) == True:
-            if ctx.message.channel.id == "419010194673106944":
+            if ctx.message.channel.id == "455856117516337179":
                 botchoice=random.choice(_rtd)
                 if int(botchoice) < 5:
                     await bot.say("Unlucky you rolled a "+str(botchoice)+". You lose "+bet+"<:Coin:439199818447978508>")
@@ -609,7 +592,7 @@ async def rtd(ctx,bet=None):
             else:
                 userID = ctx.message.author.id
                 await bot.delete_message(ctx.message)
-                await bot.say(" Hey <@%s> You need to be in <#419010194673106944> to use -rtd !" % (userID))
+                await bot.say(" Hey <@%s> You need to be in <#455856117516337179> to use -rtd !" % (userID))
         else:
             await bot.say("You do not have enough coins to do this command! You need at least "+bet+"<:Coin:439199818447978508>")
     else:
@@ -625,24 +608,24 @@ _8balllist = ["It is certain :8ball:","It is decidedly so :8ball:","Without a do
        
 @bot.command(name="8ball",pass_context=True)
 async def _8ball(ctx):
-    if ctx.message.channel.id == "419010194673106944":
+    if ctx.message.channel.id == "455856117516337179":
         await bot.say(random.choice(_8balllist))
     else:
         userID = ctx.message.author.id
         await bot.delete_message(ctx.message)
-        await bot.say(" Hey <@%s> You need to be in <#419010194673106944> to use -8ball !" % (userID))
+        await bot.say(" Hey <@%s> You need to be in <#455856117516337179> to use -8ball !" % (userID))
        
 _roulette = ["-cc take 100 <@%s>","-cc take 100 <@%s>","-cc take 100 <@%s>","-cc take 100 <@%s>","-cc take 100 <@%s>","-cc give 100 <@%s>"]
 @commands.has_role("Management")
 @bot.command(pass_context=True)
 async def roulette(ctx):
-    if ctx.message.channel.id == "419010194673106944":
+    if ctx.message.channel.id == "455856117516337179":
         userID = ctx.message.author.id
         await bot.say(random.choice(_roulette) % (userID))
     else:
         userID = ctx.message.author.id
         await bot.delete_message(ctx.message)
-        await bot.say("Hey <@%s> You need to be in <#419010194673106944> to use -roulette !" % (userID))
+        await bot.say("Hey <@%s> You need to be in <#455856117516337179> to use -roulette !" % (userID))
            
    
 _guessnum = ["1","2","3","4","5","6","7","8","9","10"]
@@ -675,7 +658,7 @@ _coin=["HEADS","TAILS"]
 async def coinflip(ctx,bet=None,*,guess):
     if bet != None and int(bet) >=1:
         if dbhandler.checkforbet(ctx,bet) == True:
-            if ctx.message.channel.id == "419010194673106944":
+            if ctx.message.channel.id == "455856117516337179":
                 if guess.upper() in _coin:
                     embed=discord.Embed(title="Coinflip! | "+ctx.message.author.display_name,description="Flipping coin....",colour=0xEE82EE)
                     message = await bot.say(embed=embed)
@@ -711,7 +694,7 @@ async def coinflip(ctx,bet=None,*,guess):
             else:
                 userID = ctx.message.author.id
                 await bot.delete_message(ctx.message)
-                await bot.say(" Hey <@%s> You need to be in <#419010194673106944> to use -coinflip !" % (userID))
+                await bot.say(" Hey <@%s> You need to be in <#455856117516337179> to use -coinflip !" % (userID))
         else:
             await bot.say("You do not have enough coins to do this command! You need at least "+bet+"<:Coin:439199818447978508>")
     else:
@@ -965,7 +948,7 @@ async def ban(ctx,member:discord.Member,*,message):
     await bot.say('<@{}>, has been banned.'.format(member.id))
     await asyncio.sleep(1)
     await bot.send_message(member,"You have been banned for the following reason : `" + str(message) + "`")
-    await bot.send_message(ctx.message.server.get_channel("432519294962761731"), str(ctx.message.author) + " banned " + str(member) + " for the reason : `" + str(message) + "`")
+    await bot.send_message(ctx.message.server.get_channel("455859161679265792"), str(ctx.message.author) + " banned " + str(member) + " for the reason : `" + str(message) + "`")
     await bot.ban(member)
        
 @commands.has_role("Manager")
@@ -980,7 +963,7 @@ async def mute(ctx,member:discord.Member):
 async def warn(ctx,user:discord.Member,*,message):
     await bot.send_message(user,"You have been warned for the following reason : `" + str(message) + "`")
     await bot.add_roles(user,discord.utils.get(ctx.message.server.roles, name="Warned"))
-    await bot.send_message(ctx.message.server.get_channel("432519294962761731"), str(ctx.message.author) + " warned " + str(user) + " for the reason : `" + str(message) + "`")
+    await bot.send_message(ctx.message.server.get_channel("455859161679265792"), str(ctx.message.author) + " warned " + str(user) + " for the reason : `" + str(message) + "`")
 
        
 @commands.has_role("Manager")
@@ -1036,10 +1019,10 @@ async def on_message(message,):
                 except discord.errors.NotFound:
                     return
     if message.content.startswith("https") or message.content.startswith("http"):
-        if message.channel.id != "414249270464610316":
+        if message.channel.id != "455855974994149406":
             if not "links" in [y.name.lower() for y in message.author.roles]:
                 await bot.delete_message(message)
-                await bot.send_message(message.server.get_channel("432519294962761731"), "Message deleted because it contained a link. Author was : "+str(message.author.display_name)) 
+                await bot.send_message(message.server.get_channel("455859161679265792"), "Message deleted because it contained a link. Author was : "+str(message.author.display_name)) 
 
     mention_match = re.match(r'<@!?(\d+)>', message.content)
     for word in contents:
