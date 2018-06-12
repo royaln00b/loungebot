@@ -41,7 +41,7 @@ async def prestige(ctx):
     else:
         await bot.say(ctx.message.author.display_name+", You need to be level 20 in the first prestige first!")
        
-@commands.has_role("Management")
+@commands.has_role("Manager")
 @bot.command()
 async def setlevel(member:discord.Member,amount):
     dbhandler.setlevel(member,amount)
@@ -49,7 +49,7 @@ async def setlevel(member:discord.Member,amount):
 
 @bot.command(pass_context=True)
 async def setmoney(ctx,member:discord.Member,amount):
-	if "management" in [y.name.lower() for y in ctx.message.author.roles]:
+	if "manager" in [y.name.lower() for y in ctx.message.author.roles]:
 		dbhandler.setmoney(member,amount)
 		await bot.add_reaction(message = ctx.message, emoji = "✅")
 	else:
@@ -64,10 +64,7 @@ async def daily(ctx):
 	if ctx.message.channel.id == "419010194673106944":
 		if dbhandler.daily(ctx) == True:
 			await bot.add_reaction(message = ctx.message, emoji = "✅")
-			if "vip" in [y.name.lower() for y in ctx.message.author.roles]:
-				embed = discord.Embed(title="Daily | "+ctx.message.author.display_name+" | VIP",description="**Added 200<:Coin:439199818447978508>!**\nBe sure to use -daily again tomorrow to gain another 200<:Coin:439199818447978508>!",colour=0x00FF15)
-			else:
-				embed = discord.Embed(title="Daily | "+ctx.message.author.display_name,description="**Added 100<:Coin:439199818447978508>!**\nBe sure to use -daily again tomorrow to gain another 100<:Coin:439199818447978508>!",colour=0x00FF15)
+			embed = discord.Embed(title="Daily | "+ctx.message.author.display_name,description="**Added 100<:Coin:439199818447978508>!**\nBe sure to use -daily again tomorrow to gain another 100<:Coin:439199818447978508>!",colour=0x00FF15)
 		else:
 			await bot.add_reaction(message = ctx.message, emoji = "🚫")
 			embed = discord.Embed(title="Daily | "+ctx.message.author.display_name,description="You have already claimed your daily today!\nYou can use this command again in "+dbhandler.getdaily(ctx)+" !",colour=0xFF0000)
@@ -149,10 +146,6 @@ keyz = "q"
        
 @bot.command(pass_context=True)
 async def help(ctx,*,command=None):
-    if not "informed" in [y.name.lower() for y in ctx.message.author.roles]:
-        await bot.add_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name="Informed"))
-        embed = discord.Embed(title="Achievement! | "+ctx.message.author.display_name,description=ctx.message.author.display_name+" earnt the achievement :books:Informed:books: !",colour=0xEE82EE)
-        await bot.say(embed=embed)
     if command == None:
         await bot.add_reaction(message = ctx.message, emoji = "✅")
         embed1 = discord.Embed(title = "Chill Bot" , description = "Hey! Welcome the the -help handbook.\nHere you can find out all the commands you can use in Avvie's Chill Server\nEnjoy your stay :)\nTo look at how to use a command do -help [command] to see how it works!\n\nIf you have any questions regarding the bot/commands, PM Royalnoob\nThanks to these amazing people the bot would not be as amazing as it is today!\nRoyalnoob\nCallum\nSesmic\nAvvie",colour = 0xEE82EE)
@@ -497,36 +490,19 @@ async def date():
        
 @bot.command(aliases=["cheat","broken"])
 async def mug():
-    await bot.say("<:royal:424936036733419550><:eyyy:425384698454343701> :coffee: <@379303619545137152> :coffee: <:eyyy:425384698454343701><:royal:424936036733419550>") #done
+    await bot.say(":coffee: <@379303619545137152> :coffee:") #done
        
-@bot.command()
-async def neko():
-    await bot.say("<:LewdNeko:414232438106095626><@304619975455539211><:LewdNeko:414232438106095626>") #done
-       
-@bot.command()
-async def urmomgay():
-    await bot.say("<@339095443503972352>") #done
        
 @bot.command(aliases=["furry"])
 async def yiff():
-    await bot.say("<:Yiff:429768873026256918><@290866940258418688><:Yiff:429768873026256918>") #done
+    await bot.say("<@290866940258418688>") #done
        
        
 @bot.command()
 async def status():
     await bot.say(":white_check_mark: Bot Online :white_check_mark:") #done
            
-@bot.command()
-async def swedensucks():
-    await bot.say(":flag_se: <@188299360159662080> :3 :flag_se:") #done
-       
-@bot.command()
-async def alwayswatching():
-    await bot.say("<:alwayswatching:429642043661484033><@414555880244117544><:alwayswatching:429642043661484033>") #done
-       
-@bot.command()
-async def daddy():
-    await bot.say("<:eyyy:425384698454343701> <@129810600992833537> <:eyyy:425384698454343701>") #done
+
        
 @bot.command(pass_context=True)
 async def creator(ctx):
@@ -545,48 +521,10 @@ async def achievements(ctx):
 
 @bot.command(pass_context=True)
 async def profile(ctx,*,member:discord.Member=None):
-	achievements = "Achievements :\n"
-	achieves = 0
 	if member == None:
 		member = ctx.message.author
 	toprole = member.top_role
-	if str(toprole) == "Royal Red":
-		toprole = "Management"
-	if "chill bot developer" in [y.name.lower() for y in member.roles]:
-		achievements = achievements + ":dizzy: , "
-		achieves = achieves + 1
-	if "server staff" in [y.name.lower() for y in member.roles]:
-		achievements = achievements + ":zap: , "
-		achieves = achieves + 1
-	if "informed" in [y.name.lower() for y in ctx.message.author.roles]:
-		achievements = achievements + ":books: , "
-		achieves = achieves + 1
-	if "rich" in [y.name.lower() for y in member.roles]:
-		achievements = achievements + ":dollar: , "
-		achieves = achieves + 1
-	if "baller" in [y.name.lower() for y in member.roles]:
-		achievements = achievements + ":money_with_wings: ,"
-		achieves = achieves + 1
-	if "millionaire" in [y.name.lower() for y in member.roles]:
-		achievements = achievements + ":moneybag: , "
-		achieves = achieves + 1
-	if dbhandler.numblevel(member) >= 10:
-		achievements = achievements + ":performing_arts: , "
-		achieves = achieves + 1
-	if dbhandler.numblevel(member) >= 20:
-		achievements = achievements + ":rosette: , "
-		achieves = achieves + 1
-	if dbhandler.numblevel(member) >= 30:
-		achievements = achievements + ":trophy: , "
-		achieves = achieves + 1
-	if dbhandler.numblevel(member) >= 40:
-		achievements = achievements + ":reminder_ribbon: , "
-		achieves = achieves + 1
-	if achieves >= 2:
-		achievements = achievements + ":dart: , "
-	if achieves >= 5:
-		achievements = achievements + ":medal: , "
-	embed=discord.Embed(title = member.name , description="Top role of : **"+str(toprole)+"**\n\nJoined discord at : "+str(member.created_at)[:10]+"\nJoined this server at : "+str(member.joined_at)[:10]+"\nCurrently playing : "+str(member.game)+"\nCurrent status : "+str(member.status)+"\n\n"+achievements[:-2]+"\n\n**Balance :** " +dbhandler.whoisbalance(member), colour = 0xEE82EE)
+	embed=discord.Embed(title = member.name , description="Top role of : **"+str(toprole)+"**\n\nJoined discord at : "+str(member.created_at)[:10]+"\nJoined this server at : "+str(member.joined_at)[:10]+"\nCurrently playing : "+str(member.game)+"\nCurrent status : "+str(member.status)+"\n\n**Balance :** " +dbhandler.whoisbalance(member), colour = 0xEE82EE)
 	embed.set_thumbnail(url = member.avatar_url)
 	embed.set_image(url = str(dbhandler.whoislevel(member)))
 	embed.set_footer(text="Requested by : "+ctx.message.author.display_name, icon_url=ctx.message.author.avatar_url)
@@ -601,21 +539,8 @@ async def avatar(ctx,*,member:discord.Member=None):
 	embed.set_footer(text="Requested by : "+ctx.message.author.display_name, icon_url=ctx.message.author.avatar_url)
 	await bot.send_message(ctx.message.channel,embed=embed)
 
-@commands.has_role("Rainbow")
-@bot.command(pass_context=True)
-async def color(ctx):
-   server = ctx.message.server
-   chars = '0123456789ABCDEF'
-   key = 'q'
-   while key == 'q':
-    await bot.edit_role(server,discord.utils.get(server.roles, name='Rainbow'), colour = discord.Colour(int('0x'+''.join(sample(chars,6)),16)))
-    await asyncio.sleep (1)
-        
-@commands.has_role("Rainbow")
-@bot.command()
-async def stopcolor():
-    key = 's'
-       
+
+
 @commands.has_role("Management")
 @bot.command(pass_context=True)
 async def applytimer(ctx):
