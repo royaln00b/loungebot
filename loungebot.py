@@ -934,14 +934,14 @@ async def ping(ctx):
        
 @bot.command(pass_context=True)
 async def admin(ctx):
-    if "server staff" in [y.name.lower() for y in ctx.message.author.roles]:
+    if "manager" in [y.name.lower() for y in ctx.message.author.roles]:
         await bot.add_reaction(ctx.message,"✅")
         embed=discord.Embed(title="Staff Commands:", description="1. mute [member] - To mute a member \n2. unmute [muted member] - To unmute a muted member \n3. warn [member] [reason] - Warn a member", color = 0xEE82EE)
         await bot.send_message(ctx.message.author,embed=embed)
-        if "discord admin" in [y.name.lower() for y in ctx.message.author.roles]:
+        if "manager" in [y.name.lower() for y in ctx.message.author.roles]:
             embed=discord.Embed(title="Admin Commands:", description="1. kick [member] - Kicks a member \n2. ban [member] [reason] - Bans a member", color = 0xEE82EE)
             await bot.send_message(ctx.message.author,embed=embed)
-            if "management" in [y.name.lower() for y in ctx.message.author.roles]:
+            if "manager" in [y.name.lower() for y in ctx.message.author.roles]:
                 embed=discord.Embed(title="Manager Commands:", description="1. purge [x] - Deletes select amount of messages \n2. say [X] - Makes the bot say something", color = 0xEE82EE)
                 await bot.send_message(ctx.message.author,embed=embed)
     else:
@@ -949,17 +949,17 @@ async def admin(ctx):
         await bot.say("Sorry <@"+str(ctx.message.author.id)+">, you are not an admin.")
        
        
-@commands.has_role("Management")
+@commands.has_role("Manager")
 @bot.command(pass_context=True)
 async def purge(ctx,num: int):
     await bot.purge_from(ctx.message.channel,limit=num)
        
-@commands.has_role("Discord Admin")
+@commands.has_role("Manager")
 @bot.command()
 async def kick(member:discord.Member):
     await bot.kick(member)
            
-@commands.has_role("Discord Admin")
+@commands.has_role("Manager")
 @bot.command(pass_context=True)
 async def ban(ctx,member:discord.Member,*,message):
     await bot.say('<@{}>, has been banned.'.format(member.id))
@@ -968,113 +968,29 @@ async def ban(ctx,member:discord.Member,*,message):
     await bot.send_message(ctx.message.server.get_channel("432519294962761731"), str(ctx.message.author) + " banned " + str(member) + " for the reason : `" + str(message) + "`")
     await bot.ban(member)
        
-@commands.has_role("Server Staff")
+@commands.has_role("Manager")
 @bot.command(pass_context=True)
 async def mute(ctx,member:discord.Member):
     await bot.say('<@{}>, you have been muted'.format(member.id))
     await asyncio.sleep(1)
     await bot.add_roles(member,discord.utils.get(ctx.message.server.roles, name="Muted"))
        
-@commands.has_role("Server Staff")
+@commands.has_role("Manager")
 @bot.command(pass_context=True)
 async def warn(ctx,user:discord.Member,*,message):
     await bot.send_message(user,"You have been warned for the following reason : `" + str(message) + "`")
     await bot.add_roles(user,discord.utils.get(ctx.message.server.roles, name="Warned"))
     await bot.send_message(ctx.message.server.get_channel("432519294962761731"), str(ctx.message.author) + " warned " + str(user) + " for the reason : `" + str(message) + "`")
+
        
-       
-@bot.command(pass_context=True)
-async def colors(ctx):
-    if ctx.message.channel.id == "419010194673106944":
-        await bot.say("The available colors to use are : blue , yellow , red , white , mint , purple , lime , lightblue , chocolate , pink , orange , cobalt , osu! (yes its not a color but shut up XD)")
-    else:
-        userID = ctx.message.author.id
-        await bot.delete_message(ctx.message)
-        await bot.say("Hey <@%s> You need to be in <#419010194673106944> to use -colors!" % (userID))
-       
-       
-@bot.command(pass_context=True)
-async def uncolorme(ctx,*,message):
-    if ctx.message.channel.id == "419010194673106944":
-        if message == "blue":
-            await bot.remove_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "yellow":
-            await bot.remove_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "red":
-            await bot.remove_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "white":
-            await bot.remove_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "mint":
-            await bot.remove_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "purple":
-            await bot.remove_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "lime":
-            await bot.remove_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "lightblue":
-            await bot.remove_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "chocolate":
-            await bot.remove_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "pink":
-            await bot.remove_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "orange":
-            await bot.remove_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "cobalt":
-            await bot.remove_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "osu!":
-            await bot.remove_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        else:
-            await bot.say("I could not find this role")
-    else:
-        userID = ctx.message.author.id
-        await bot.delete_message(ctx.message)
-        await bot.say("Hey <@%s> You need to be in <#419010194673106944> to use -uncolorme!" % (userID))
-       
-@bot.command(pass_context=True)
-async def colorme(ctx,*,message):
-    if ctx.message.channel.id == "419010194673106944":
-        if message == "blue":
-            await bot.add_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "yellow":
-            await bot.add_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "red":
-            await bot.add_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "white":
-            await bot.add_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "mint":
-            await bot.add_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "purple":
-            await bot.add_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "lime":
-            await bot.add_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "lightblue":
-            await bot.add_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "chocolate":
-            await bot.add_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "pink":
-            await bot.add_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "orange":
-            await bot.add_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "cobalt":
-            await bot.add_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        elif message == "osu!":
-            await bot.add_roles(ctx.message.author,discord.utils.get(ctx.message.server.roles, name=str(message)))
-        else:
-            await bot.say("I could not find this role")
-    else:
-        userID = ctx.message.author.id
-        await bot.delete_message(ctx.message)
-        await bot.say("Hey <@%s> You need to be in <#419010194673106944> to use -uncolorme!" % (userID))
-       
-       
-       
-@commands.has_role("Server Staff")
+@commands.has_role("Manager")
 @bot.command(pass_context=True)
 async def unmute(ctx,member:discord.Member):
     await bot.say('<@{}>, you have been unmuted'.format(member.id))
     await asyncio.sleep(1)
     await bot.remove_roles(member,discord.utils.get(ctx.message.server.roles, name="Muted"))
        
-@commands.has_role("Management")
+@commands.has_role("Manager")
 @bot.command(pass_context=True)
 async def say(ctx, *, X):
     await bot.delete_message(ctx.message)
@@ -1133,7 +1049,7 @@ async def on_message(message,):
             await bot.add_reaction(message, "\U0001f1f3")
             await bot.add_reaction(message, "\U0001f1ec")
             await bot.add_reaction(message, "\U0001f621")
-    if message.author.id != "425957421975076864":
+    if message.author.id != "456048004944625674":
         if message.author.id != "398601531525562369":
             if message.author.id != "170903342199865344":
                 if message.author.id != "160105994217586689":
@@ -1160,7 +1076,7 @@ async def on_message(message,):
     
 @bot.event
 async def on_message_delete(message):
-    if message.author.id != "425957421975076864":
+    if message.author.id != "456048004944625674":
         if message.author.id != "398601531525562369":
             if message.author.id != "170903342199865344":
                 if message.author.id != "160105994217586689":
@@ -1174,11 +1090,11 @@ async def on_message_delete(message):
                                                 if not message.content.startswith("-d"):
                                                     fmt = "{0.author.name}'s message has been deleted: \n {0.content} \nFrom the channel : \n #" + str(message.channel.name)
                                                     embed=discord.Embed(title=None, description= fmt.format(message), colour = 0xFF0000)
-                                                    await bot.send_message(message.server.get_channel("418998532305846272"), embed=embed)
+                                                    await bot.send_message(message.server.get_channel("455886151107084288"), embed=embed)
        
 @bot.event
 async def on_message_edit(before, after):
-    if after.author.id != "425957421975076864":
+    if after.author.id != "456048004944625674":
         if after.author.id != "398601531525562369":
             if after.author.id != "170903342199865344":
                 if after.author.id != "160105994217586689":
@@ -1187,7 +1103,7 @@ async def on_message_edit(before, after):
                             if after.author.id != "202930020396564480":
                                 fmt = '**{0.author.name} edited their message from :**\n\n{0.content}\n\n**To:**\n\n{1.content}\n\n**From the channel :**\n\n#' + str(before.channel.name)
                                 embed=discord.Embed(title=None,description=fmt.format(before,after),colour = 0xFFB600)
-                                await bot.send_message(before.server.get_channel("418998532305846272"), embed=embed)
+                                await bot.send_message(before.server.get_channel("455886151107084288"), embed=embed)
        
        
 @bot.command(pass_context=True)
@@ -1196,18 +1112,18 @@ async def id(ctx):
        
 @bot.event
 async def on_member_join(member):
-    if member.server.id == "413580303248916481":
+    if member.server.id == "455851306461167628":
         server = member.server
         fmt = '**Welcome {0.mention} to {1.name}**!'
         await bot.add_roles(member,discord.utils.get(member.server.roles, name="Member"))
-        await bot.send_message(bot.get_channel("413580303248916483"), fmt.format(member, server))
+        await bot.send_message(bot.get_channel("455851306461167630"), fmt.format(member, server))
        
 @bot.event
 async def on_member_remove(member):
-    if member.server.id == "413580303248916481":
+    if member.server.id == "455851306461167628":
         server = member.server
         fmt = '**{0.display_name} has left {1.name}!**'
-        await bot.send_message(bot.get_channel("413580303248916483"), fmt.format(member, server))
+        await bot.send_message(bot.get_channel("455851306461167630"), fmt.format(member, server))
  
 zkey = "q"
 @bot.event
