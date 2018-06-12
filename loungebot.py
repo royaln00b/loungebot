@@ -991,15 +991,6 @@ async def on_message(message,):
                     await bot.send_message(message.channel, "**Hey!** <@%s> You have just violated rule #6! Shame on you >:(" % (userID))
                 except discord.errors.NotFound:
                     return
-    if message.content.startswith("https") or message.content.startswith("http"):
-        if message.channel.id != "455855974994149406":
-            if message.channel.id != "455856699325153312":
-                if messgae.channel.id != "455859070113677336":
-                    if message.author.id != "425957421975076864":
-                        if not "links" in [y.name.lower() for y in message.author.roles]:
-                            await bot.delete_message(message)
-                            await bot.send_message(message.server.get_channel("455859161679265792"), "Message deleted because it contained a link. Author was : "+str(message.author.display_name)) 
-
     mention_match = re.match(r'<@!?(\d+)>', message.content)
     for word in contents:
         if mention_match and mention_match.group(1) == '425957421975076864':
