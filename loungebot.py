@@ -64,7 +64,7 @@ async def daily(ctx):
 	if ctx.message.channel.id == "455856117516337179":
 		if dbhandler.daily(ctx) == True:
 			await bot.add_reaction(message = ctx.message, emoji = "✅")
-			embed = discord.Embed(title="Daily | "+ctx.message.author.display_name,description="**Added 100<:coin:456086215909965825>!**\nBe sure to use -daily again tomorrow to gain another 100<:Coin:439199818447978508>!",colour=0xFF0000)
+			embed = discord.Embed(title="Daily | "+ctx.message.author.display_name,description="**Added 100 <:coin:456086215909965825>!**\nBe sure to use -daily again tomorrow to gain another 100 <:coin:456086215909965825>!",colour=0xFF0000)
 		else:
 			await bot.add_reaction(message = ctx.message, emoji = "🚫")
 			embed = discord.Embed(title="Daily | "+ctx.message.author.display_name,description="You have already claimed your daily today!\nYou can use this command again in "+dbhandler.getdaily(ctx)+" !",colour=0xFF0000)
