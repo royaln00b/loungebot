@@ -154,7 +154,7 @@ async def help(ctx,*,command=None):
         embed4 = discord.Embed(title = "Chill Currency    Page 3 / 6" , description = "-balance/-b - Check your balance\n-leaderboard/-l - Check who the top 5 richest people on the server are\n-daily - Collect your daily Chill Coins\n-level - Check what level you are\n-xp - Check how much xp you have\n-donate - Donate your coins to another member",colour = 0xFF0000)
         embed5 = discord.Embed(title = "Games    Page 4 / 6" , description = "-8ball - Ask the Chill Bot a yes or no question\n-guess - Guess a random number between 1 and 10\n-flip - Flip a coin\n-rps - Rock paper scissors\n-coinflip - Flip a coin and earn chill currency\n-slot - (VIP only) Run a slot machine with a max prize of 10x your bet!\n-rtd - Roll The dice. Roll a 5 or 6 and you win!",colour = 0xFF0000)  
         embed6 = discord.Embed(title = "Self Assignable Roles    Page 5 / 6" , description = "-colors - Check what colors you can assign\n-colorme - Add yourself to a color\n-uncolorme - Remove yourself from a color",colour = 0xFF0000)
-        embed7 = discord.Embed(title = "Pings    Page 6 / 6" , description = "-mug - Pings the mug himself\n-yiff - Pings our local furry",colour = 0xFF0000)   
+        embed7 = discord.Embed(title = "Pings    Page 6 / 6" , description = "-mug - Pings the mug himself\n-yiff - Pings our local furry\n-slutofsf - Pings Nekoslave\n-urmomgay - Pings Callum\n-daddy - Pings your daddy",colour = 0xFF0000)   
         message = await bot.send_message(ctx.message.author,embed=embed1)
         await bot.add_reaction(message = message, emoji = "▶")
         while keyz == "q":
@@ -458,15 +458,25 @@ async def lit():
 async def date():
     await bot.say(datetime.date.today())
        
-@bot.command(aliases=["cheat","broken"])
+@bot.command(aliases=["cheat","broken","sqli","injectmedaddy"])
 async def mug():
     await bot.say(":coffee: <@379303619545137152> :coffee:") #done
-       
+
+@bot.command()
+async def slutofsf():
+    await bot.say("<@414555880244117544>")
        
 @bot.command(aliases=["furry"])
 async def yiff():
-    await bot.say("<@290866940258418688>") #done
-       
+    await bot.say("<@290866940258418688>")
+
+@bot.command()
+async def urmomgay():
+    await bot.say("<@339095443503972352>")
+
+@bot.command()
+async def daddy():
+    await bot.say("<@129810600992833537>")
        
 @bot.command()
 async def status():
@@ -1006,7 +1016,7 @@ async def on_message(message,):
                     if message.author.id != "285480424904327179":
                         if message.author.id != "346702890368368640":
                             if message.author.id != "202930020396564480":
-                                if message.author.id != "202930020396564489":
+                                if message.author.id != "235088799074484224":
                                     if message.channel.id != "420775325270802452":
                                         dbhandler.addonmessage(message)
                                         dbhandler.xp(message)
@@ -1033,14 +1043,15 @@ async def on_message_delete(message):
                     if message.author.id != "285480424904327179":
                         if message.author.id != "346702890368368640":
                             if message.author.id != "202930020396564480":
-                                if not message.content.startswith("-say"):
-                                    if not message.content.startswith("next"):
-                                        if not message.content.startswith("hit"):
-                                            if not message.content.startswith("stay"):
-                                                if not message.content.startswith("-d"):
-                                                    fmt = "{0.author.name}'s message has been deleted: \n {0.content} \nFrom the channel : \n #" + str(message.channel.name)
-                                                    embed=discord.Embed(title=None, description= fmt.format(message), colour = 0xFF0000)
-                                                    await bot.send_message(message.server.get_channel("455886151107084288"), embed=embed)
+                                if message.author.id != "235088799074484224":
+                                    if not message.content.startswith("-say"):
+                                        if not message.content.startswith("next"):
+                                            if not message.content.startswith("hit"):
+                                                if not message.content.startswith("stay"):
+                                                    if not message.content.startswith("-d"):
+                                                        fmt = "{0.author.name}'s message has been deleted: \n {0.content} \nFrom the channel : \n #" + str(message.channel.name)
+                                                        embed=discord.Embed(title=None, description= fmt.format(message), colour = 0xFF0000)
+                                                        await bot.send_message(message.server.get_channel("455886151107084288"), embed=embed)
        
 @bot.event
 async def on_message_edit(before, after):
@@ -1051,9 +1062,10 @@ async def on_message_edit(before, after):
                     if after.author.id != "285480424904327179":
                         if after.author.id != "346702890368368640":
                             if after.author.id != "202930020396564480":
-                                fmt = '**{0.author.name} edited their message from :**\n\n{0.content}\n\n**To:**\n\n{1.content}\n\n**From the channel :**\n\n#' + str(before.channel.name)
-                                embed=discord.Embed(title=None,description=fmt.format(before,after),colour = 0xFFB600)
-                                await bot.send_message(before.server.get_channel("455886151107084288"), embed=embed)
+                                if message.author.id != "235088799074484224":
+                                    fmt = '**{0.author.name} edited their message from :**\n\n{0.content}\n\n**To:**\n\n{1.content}\n\n**From the channel :**\n\n#' + str(before.channel.name)
+                                    embed=discord.Embed(title=None,description=fmt.format(before,after),colour = 0xFFB600)
+                                    await bot.send_message(before.server.get_channel("455886151107084288"), embed=embed)
        
        
 @bot.command(pass_context=True)
