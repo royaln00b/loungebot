@@ -470,7 +470,7 @@ async def slutofsf():
 async def yiff():
     await bot.say("<@290866940258418688>")
 
-@bot.command(aliases=["whatever","leetworld"])
+@bot.command(aliases=["leetworld"])
 async def spy():
     await bot.say("<@345255651913498634>")
 
