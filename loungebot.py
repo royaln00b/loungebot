@@ -24,9 +24,10 @@ t = datetime.datetime.now()
 
 @commands.has_role("Manager")
 @bot.command(pass_context=True, aliases=['google','g'])
-async def lmgtfy(ctx,*args=None):
+async def lmgtfy(ctx,*,args=None):
 	if not args == None:
-		url = "http://lmgtfy.com/?q=" + "+".join(args)
+		contents = ctx.message.content.split(" ")
+		url = "http://lmgtfy.com/?q=" + "+".join(contents)
 		await bot.send_message(ctx.message.channel, embed=discord.Embed(description="%s" % url))
 	else:
 		await bot.send_message(ctx.message.channel, embed=discord.Embed(description="**Nope**"))
