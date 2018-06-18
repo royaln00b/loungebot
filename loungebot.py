@@ -12,6 +12,7 @@ import datetime
 import dbhandler
 import os
 
+discord.opus.load_opus()
 
 dbhandler.create_table()
 
