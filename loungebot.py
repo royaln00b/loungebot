@@ -2,6 +2,7 @@ import discord
 import asyncio
 from discord.ext.commands import Bot
 from discord.ext import commands
+import youtube_dl
 import time
 import re
 import random
