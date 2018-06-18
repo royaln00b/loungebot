@@ -21,7 +21,14 @@ bot.remove_command('help')
        
 t = datetime.datetime.now()
 
-
+@commands.has_role("Manager")
+@bot.command(pass_context=True)
+async def yt(ctx,*,url):
+	author = ctx.message.author
+	voice_channel = author.voice_channel
+	vc = await client.join_voice_channel(voice_channel)
+	player = await vc.create_ytdl_player(url)
+	player.start()
     
 @commands.has_role("Manager")
 @bot.command()
