@@ -12,17 +12,6 @@ import datetime
 import dbhandler
 import os
 
-OPUS_LIBS = ['libopus-0.x86.dll', 'libopus-0.x64.dll', 'libopus-0.dll', 'libopus.so.0', 'libopus.0.dylib']
-
-
-def load_opus_lib():
-    if opus.is_loaded():
-        return True
-
-    for opus_lib in opus_libs:
-        try:
-            opus.load_opus(opus_lib)
-            return
 
 dbhandler.create_table()
 
@@ -33,14 +22,6 @@ bot.remove_command('help')
        
 t = datetime.datetime.now()
 
-@commands.has_role("Manager")
-@bot.command(pass_context=True)
-async def yt(ctx,*,url):
-	author = ctx.message.author
-	voice_channel = author.voice_channel
-	vc = await bot.join_voice_channel(voice_channel)
-	player = await vc.create_ytdl_player(url)
-	player.start()
     
 @commands.has_role("Manager")
 @bot.command()
