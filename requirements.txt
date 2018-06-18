@@ -1,3 +1,4 @@
 discord.py
 asyncio
 psycopg2
+youtube_dl
