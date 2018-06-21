@@ -489,6 +489,10 @@ async def urmomgay():
     await bot.say("<@339095443503972352>")
 
 @bot.command()
+async def succubus():
+    await bot.say("<@304619975455539211>")
+
+@bot.command()
 async def daddy():
     await bot.say("<@129810600992833537>")
        
