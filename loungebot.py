@@ -1076,7 +1076,7 @@ async def on_message_edit(before, after):
                     if after.author.id != "285480424904327179":
                         if after.author.id != "346702890368368640":
                             if after.author.id != "202930020396564480":
-                                if message.author.id != "235088799074484224":
+                                if after.author.id != "235088799074484224":
                                     fmt = '**{0.author.name} edited their message from :**\n\n{0.content}\n\n**To:**\n\n{1.content}\n\n**From the channel :**\n\n#' + str(before.channel.name)
                                     embed=discord.Embed(title=None,description=fmt.format(before,after),colour = 0xFFB600)
                                     await bot.send_message(before.server.get_channel("455886151107084288"), embed=embed)
